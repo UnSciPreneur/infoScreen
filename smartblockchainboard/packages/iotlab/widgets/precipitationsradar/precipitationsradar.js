@@ -10,6 +10,6 @@ widget = {
 
 
     $('#prognosisimg').attr('src', data.imageSrc);
-    // $('#prognosistitle').html(data.imageDesc);
+    $('#prognosistitle').html(data.imageDesc);
   }
 };
