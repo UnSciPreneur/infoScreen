@@ -91,12 +91,12 @@
       "url": "http://c.xkcd.com/random/comic/"
     },
     "picture": {
-      "interval": 60000,
+      "interval": 10000,
       "widgetTitle": "Nat Geo Picture of the Day",
       "url": "http://photography.nationalgeographic.com/photography/photo-of-the-day"
     },
     "quotes-famous": {
-      "interval": 60000,
+      "interval": 12000,
       "widgetTitle": "Famous Quotes",
       "quotes": [
         {
