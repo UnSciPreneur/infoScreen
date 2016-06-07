@@ -136,7 +136,7 @@
           "author": "Edsger Dijkstra"
         }
       ],
-      "limit": 3
+      "limit": 2
     },
     "sales": {
       "interval": 60000,
