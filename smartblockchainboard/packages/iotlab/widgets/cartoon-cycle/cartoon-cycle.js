@@ -9,7 +9,7 @@ widget = {
         }
 
         $('.content', el).html(
-            "<img class='featured-image' src='" + data.imageSrc + "'/>"
+            "<a href='" + data.pageSrc + "' target='_blank'><img class='featured-image' src='" + data.imageSrc + "'/></a>"
         );
     }
 };

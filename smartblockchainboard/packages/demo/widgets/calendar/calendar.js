@@ -16,7 +16,7 @@ widget = {
 
       data.events.forEach(function (event) {
         var eventDiv = $("<div/>").addClass('leave-event');
-        $(eventDiv).append($("<div/>").addClass('leave-dates').append(event.startDate + " - " + event.endDate));
+        $(eventDiv).append($("<div/>").addClass('leave-dates').append(event.startDate));
         $(eventDiv).append($("<div/>").addClass('leave-summary').append(event.summary));
 
         $content.append(eventDiv);

@@ -60,7 +60,7 @@ module.exports = function(config, dependencies, job_callback) {
             job_callback(err_msg);
         } else {
             var result = $('#comic img', body).attr('src');
-            job_callback(null, {imageSrc: result, title: config.widgetTitle });
+            job_callback(null, {pageSrc: 'http://xkcd.com', imageSrc: result, title: config.widgetTitle });
         }
     });
 

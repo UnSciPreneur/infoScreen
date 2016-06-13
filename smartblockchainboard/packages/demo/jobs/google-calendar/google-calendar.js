@@ -13,7 +13,9 @@ module.exports = {
     var formatDate = function (date) {
       var d = date.getDate();
       var m = date.getMonth() + 1;
-      return '' + (m <= 9 ? '0' + m : m) + '/' + (d <= 9 ? '0' + d : d);
+      var h = date.getHours();
+      var mi = date.getMinutes();
+      return '' + (d <= 9 ? '0' + d : d) + '.' + (m <= 9 ? '0' + m : m) + '. ' + (h <= 9 ? '0' + h : h) + ':' + (mi <= 9 ? '0' + mi : mi);
     };
 
     ical.fromURL(config.calendarUrl, {}, function (err, data) {
