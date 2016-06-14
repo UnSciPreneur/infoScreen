@@ -1,7 +1,7 @@
 {
-  "title": "The IoT Lab Dashboard",
+  "title": "Test Dashboard",
   "titleVisible": false,
-  "description": "An experimental framework for IoT related data.",
+  "description": "Almost naked test board.",
   "layout": {
     "customJS": [
       "jquery.peity.js"
@@ -10,15 +10,23 @@
       {
         "row": 1,
         "col": 1,
-        "width": 2,
+        "width": 4,
         "height": 2,
-        "widget": "btcrates",
-        "job": "btcrates",
-        "config": "btcrates"
+        "widget": "trello",
+        "job": "trello",
+        "config": "trello"
       }
     ]
   },
   "config": {
+    "trello": {
+      "interval": 10000,
+      "widgetTitle": "Bosch IoT Lab Team Board (Trello)"
+    },
+    "weatherforecast": {
+      "interval": 10000,
+      "widgetTitle": "Weather forecast"
+    },
     "btcrates": {
       "interval": 30000,
       "widgetTitle": "BTC in USD"

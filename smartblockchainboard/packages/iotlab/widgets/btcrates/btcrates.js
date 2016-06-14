@@ -15,8 +15,8 @@ widget = {
     var data = rawData["price"];
 
     var margin = {top: 20, right: 20, bottom: 30, left: 50},
-      width = 580 - margin.left - margin.right,
-      height = 420 - margin.top - margin.bottom;
+      width = 430 - margin.left - margin.right,
+      height = 270 - margin.top - margin.bottom;
 
     var formatDate = d3.time.format("%d-%b-%y");
 

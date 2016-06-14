@@ -3,6 +3,10 @@
   "titleVisible": false,
   "description": "An experimental framework for IoT related data.",
   "layout": {
+    "gridSize" : {
+      "columns": 8,
+      "rows": 6
+    },
     "customJS": [
       "jquery.peity.js"
     ],
@@ -35,6 +39,15 @@
         "config": "precipitationsradar"
       },
       {
+        "row": 1,
+        "col": 7,
+        "width": 2,
+        "height": 4,
+        "widget": "weatherforecast",
+        "job": "weatherforecast",
+        "config": "weatherforecast"
+      },
+      {
         "row": 3,
         "col": 1,
         "width": 2,
@@ -60,12 +73,38 @@
         "widget": "calendar",
         "job": "google-calendar",
         "config": "calendar-holidays"
+      },
+      {
+        "row": 5,
+        "col": 1,
+        "width": 2,
+        "height": 2,
+        "widget": "keyvaluelist",
+        "job": "issue-types",
+        "config": "issue-types"
+      },
+      {
+        "row": 5,
+        "col": 3,
+        "width": 6,
+        "height": 2,
+        "widget": "trello",
+        "job": "trello",
+        "config": "trello"
       }
     ]
   },
   "config": {
+    "trello": {
+      "interval": 10000,
+      "widgetTitle": "Bosch IoT Lab Team Board (Trello)"
+    },
+    "weatherforecast": {
+      "interval": 10000,
+      "widgetTitle": "Weather forecast"
+    },
     "btcrates": {
-      "interval": 1000,
+      "interval": 60000,
       "widgetTitle": "BTC in USD"
     },
     "calendar-holidays": {

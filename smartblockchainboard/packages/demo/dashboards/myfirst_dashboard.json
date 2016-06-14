@@ -29,7 +29,7 @@
         "row": 1,
         "col": 5,
         "width": 2,
-        "height": 4,
+        "height": 2,
         "widget": "quotes",
         "job": "quotes",
         "config": "quotes-famous"
@@ -45,12 +45,21 @@
       },
       {
         "row": 3,
-        "col": 2,
+        "col": 3,
         "width": 2,
         "height": 2,
         "widget": "calendar",
         "job": "google-calendar",
         "config": "calendar-holidays"
+      },
+      {
+        "row": 3,
+        "col": 5,
+        "width": 2,
+        "height": 2,
+        "widget": "image",
+        "job": "picture-of-the-day",
+        "config": "picture"
       }
     ]
   },

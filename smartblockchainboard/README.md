@@ -11,3 +11,7 @@ and start the application with
 $ atlasboard start 3001
 
 you can then view your board in the browser at http://localhost:3001
+
+## Atlasboard Docu
+
+https://bitbucket.org/atlassian/atlasboard
