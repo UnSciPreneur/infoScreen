@@ -51,7 +51,7 @@ module.exports = {
       console.log("Getting cards");
       var listCount = 0;
 
-      if(err != undefined) {
+      if(err == null) {
         // catch the case that we did not find any lists
 
         trelloLists.forEach(function (list) {
