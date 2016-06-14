@@ -96,8 +96,13 @@
   },
   "config": {
     "trello": {
-      "interval": 10000,
-      "widgetTitle": "Bosch IoT Lab Team Board (Trello)"
+      "interval": 30000,
+      "widgetTitle": "Bosch IoT Lab Team Board (Trello)",
+      "trelloAppKey": "c8d8300ea38877d8335d511a01c246d7",
+      "trelloUserToken": "6be5f3d21ddc23990b0980da05b4ccc928a8bd72e44b82692788a8f812a14d49",
+      "trelloPublicSmartHomeBoardId": "575fba0bc7b53e085b95f141",
+      "trelloBoardId": "5729b8d32cd6e4d44c19fa58"
+
     },
     "weatherforecast": {
       "interval": 10000,

@@ -19,7 +19,8 @@
     "cheerio": ">=0.20.0",
     "dateformat": ">=1.0.12",
     "chart.js": "2.1.5",
-    "d3": "3.5.17"
+    "d3": "3.5.17",
+    "trello": "0.5.1"
   },
   "scripts": {
     "start": "node start",
