@@ -40,7 +40,6 @@ module.exports = {
   onRun: function (config, dependencies, jobCallback) {
     //var logger = dependencies.logger;
 
-
     var Trello = require("trello");
     var trello = new Trello(config.trelloAppKey, config.trelloUserToken);
 
@@ -64,7 +63,7 @@ module.exports = {
 
           listCount += 1;
           if (trelloLists.length === listCount) {
-            jobCallback(err, {title: "Trello lists", lists: result});
+            jobCallback(err, {title: config.widgetTitle, lists: result});
           }
         });
       });
