@@ -1,5 +1,5 @@
 widget = {
-  // see http://bl.ocks.org/mbostock/3883245 for reference
+  // see http://bl.ocks.org/mbostock/3883245 and http://jsfiddle.net/nNesx/ for reference
 
   //runs when we receive data from the job
   onData: function (el, indata) {
