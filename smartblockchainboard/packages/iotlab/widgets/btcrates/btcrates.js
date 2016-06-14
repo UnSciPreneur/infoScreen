@@ -11,13 +11,12 @@ widget = {
 
     // $('.content', el).html(data.html);
 
-    var data = JSON.parse(indata.html);
-
-    console.log(data.price);
+    var rawData = JSON.parse(indata.html);
+    var data = rawData["price"];
 
     var margin = {top: 20, right: 20, bottom: 30, left: 50},
-      width = 500 - margin.left - margin.right,
-      height = 500 - margin.top - margin.bottom;
+      width = 580 - margin.left - margin.right,
+      height = 420 - margin.top - margin.bottom;
 
     var formatDate = d3.time.format("%d-%b-%y");
 
@@ -36,8 +35,8 @@ widget = {
       .orient("left");
 
     var line = d3.svg.line()
-      .x(function(d) { return x(d.price[0]); })
-      .y(function(d) { return y(d.price[1]); });
+      .x(function(d) { return x(d[0]); })
+      .y(function(d) { return y(d[1]); });
 
     d3.select("g").remove();
 
@@ -47,8 +46,8 @@ widget = {
       .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    x.domain(d3.extent(data, function(d) { return d.date; }));
-    y.domain(d3.extent(data, function(d) { return d.close; }));
+    x.domain(d3.extent(data, function(d) { return d[0]; }));
+    y.domain(d3.extent(data, function(d) { return d[1]; }));
 
     svg.append("g")
       .attr("class", "x axis")
@@ -70,13 +69,5 @@ widget = {
       .attr("class", "line")
       .attr("d", line);
 
-    //console.log("raw data:" . indata.html);
   }
 };
-
-/*
-function type(d) {
-  d.date = formatDate.parse(d.date);
-  d.close = +d.close;
-  return d;
-}  */
