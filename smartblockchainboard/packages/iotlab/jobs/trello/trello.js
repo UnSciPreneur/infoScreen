@@ -55,15 +55,17 @@ module.exports = {
           result[list.id] = {name: list.name, topics: {}};
 
           trello.getCardsOnList(list.id,  function (err, trelloCards) {
-            var i = 0;
-            trelloCards.forEach(function (card) {
-              result[list.id]["topics"][i] = card.name;
-              i++;
-            });
+            if(err == null || trelloCards == undefined || trelloCards == null) {
+              var i = 0;
+              trelloCards.forEach(function (card) {
+                result[list.id]["topics"][i] = card.name;
+                i++;
+              });
 
-            listCount += 1;
-            if (trelloLists.length === listCount) {
-              jobCallback(err, {title: config.widgetTitle, lists: result});
+              listCount += 1;
+              if (trelloLists.length === listCount) {
+                jobCallback(err, {title: config.widgetTitle, lists: result});
+              }
             }
           });
         });
