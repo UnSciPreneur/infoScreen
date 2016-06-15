@@ -8,7 +8,7 @@ widget = {
       $('h2', el).text(data.title);
     }
 
-    $('.content', el).html(data.text);
+    //$('.content', el).html(data.text);
 
     connectSocket();
   }
@@ -34,17 +34,13 @@ function connectSocket()
       artCh.close();
     };
 
-    setLight = function(state) {
-      console.log("Setting State");
-      artCh.send(state);
-    };
-
     artCh.onopen = function() {
       // Web Socket is connected, send data using send()
       //ws.send("This is iWidget!");
       document.getElementById("wsConnect").style.background='rgb(' + 0x00 + ',' + 0xFF + ',' + 0x00 + ')';
       connected = true;
     };
+
     artCh.onmessage = function (evt) {
       var receivedMsg = evt.data;
       if (receivedMsg == "vangogh") {
@@ -64,11 +60,14 @@ function connectSocket()
         document.getElementById("dali").style="display:inline";
 
       } else {
+        /*
         document.getElementById("vangogh").style="display:none";
         document.getElementById("monet").style="display:none";
         document.getElementById("dali").style="display:none";
+        */
       }
     };
+
     artCh.onclose = function()
     {
       // websocket is closed.

@@ -9,7 +9,7 @@ widget = {
       $('h2', el).text(data.title);
     }
 
-    $('.content', el).html(data.text);
+    //$('.content', el).html(data.text);
 
     connectSocket();
   }
@@ -38,18 +38,21 @@ function connectSocket()
     };
 
     setLight = function(state) {
-      console.log("Setting State");
+      console.log("Setting state=" + state);
       setCh.send(state);
     };
 
     statusCh.onopen = function() {
       // Web Socket is connected, send data using send()
-      //ws.send("This is iWidget!");
+      // ws.send("This is iWidget!");
       document.getElementById("wsConnect").style.background='rgb(' + 0x00 + ',' + 0xFF + ',' + 0x00 + ')';
       connected = true;
+      console.log("Websocket connected");
     };
     statusCh.onmessage = function (evt) {
       var receivedMsg = evt.data;
+
+      console.log("Received light event " + receivedMsg);
       if (receivedMsg == 1) {
         // set image to lightbulb on
         document.getElementById("lightbulbOn").style="display:inline";
