@@ -42,16 +42,13 @@ module.exports = {
 
     var Trello = require("trello");
     var trello = new Trello(config.trelloAppKey, config.trelloUserToken);
-
     var result = {};
 
-    console.log("Getting lists");
     trello.getListsOnBoard(config.trelloBoardId, function (err, trelloLists) {
 
-      console.log("Getting cards");
       var listCount = 0;
 
-      if(err == null) {
+      if(err == null || trelloLists == undefined || trelloLists == null) {
         // catch the case that we did not find any lists
 
         trelloLists.forEach(function (list) {
@@ -70,6 +67,9 @@ module.exports = {
             }
           });
         });
+      } else {
+        console.log("There has been an error fetching Trello lists: " + err);
+        console.log("trelloLists=" + trelloLists);
       }
     });
 
