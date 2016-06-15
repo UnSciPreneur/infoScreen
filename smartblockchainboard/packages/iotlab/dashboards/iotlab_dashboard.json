@@ -12,7 +12,7 @@
     ],
     "widgets": [
       {
-        "row": 1,
+        "row": 5,
         "col": 1,
         "width": 2,
         "height": 2,
@@ -25,9 +25,9 @@
         "col": 3,
         "width": 2,
         "height": 2,
-        "widget": "quotes",
-        "job": "quotes",
-        "config": "quotes-famous"
+        "widget": "lightswitch",
+        "job": "lightswitch",
+        "config": "lightswitch"
       },
       {
         "row": 1,
@@ -48,7 +48,7 @@
         "config": "weatherforecast"
       },
       {
-        "row": 3,
+        "row": 1,
         "col": 1,
         "width": 2,
         "height": 2,
@@ -61,9 +61,9 @@
         "col": 3,
         "width": 2,
         "height": 2,
-        "widget": "image",
-        "job": "picture-of-the-day",
-        "config": "picture"
+        "widget": "artgallery",
+        "job": "artgallery",
+        "config": "artgallery"
       },
       {
         "row": 3,
@@ -75,13 +75,13 @@
         "config": "calendar-holidays"
       },
       {
-        "row": 5,
+        "row": 3,
         "col": 1,
         "width": 2,
         "height": 2,
-        "widget": "keyvaluelist",
-        "job": "issue-types",
-        "config": "issue-types"
+        "widget": "quotes",
+        "job": "quotes",
+        "config": "quotes-famous"
       },
       {
         "row": 5,
@@ -95,6 +95,14 @@
     ]
   },
   "config": {
+    "artgallery": {
+      "interval": 10000,
+      "widgetTitle": "Art Gallery"
+    },
+    "lightswitch": {
+      "interval": 10000,
+      "widgetTitle": "Light Switch"
+    },
     "trello": {
       "interval": 30000,
       "widgetTitle": "Bosch IoT Lab Team Board (Trello)",
