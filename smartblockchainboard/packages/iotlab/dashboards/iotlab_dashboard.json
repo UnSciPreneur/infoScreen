@@ -137,8 +137,8 @@
     "precipitationsradar": {
       "interval": 1000,
       "widgetTitle": "Precipitations",
-      "url": "http://meteo.search.ch/images/cosmo/PREC/",
-      "timeframe": 3600
+      "url": "http://meteo.search.ch/images/cosmo/PREC1/",
+      "timeframe": 7200
     },
     "cartoon-cycle": {
       "interval": 30000,
