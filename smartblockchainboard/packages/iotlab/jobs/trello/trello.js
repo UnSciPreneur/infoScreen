@@ -48,25 +48,16 @@ module.exports = {
 
       var listCount = 0;
 
-      if(err == null && trelloLists != undefined && trelloLists != null) {
-        // catch the case that we did not find any lists
-
-        if(Object.prototype.toString.call( trelloLists ) != '[object Array]') {
-          console.log(Object.prototype.toString.call( trelloLists ));
-          console.log(trelloLists);
-        }
+      // catch the case that we did not find any lists
+      if(err == null && Object.prototype.toString.call( trelloLists ) == '[object Array]') {
 
         trelloLists.forEach(function (list) {
           result[list.id] = {name: list.name, topics: {}};
 
+          // catch the case that we did not find any cards
           trello.getCardsOnList(list.id,  function (err, trelloCards) {
-            if(err == null && trelloCards != undefined && trelloCards != null) {
+            if(err == null && Object.prototype.toString.call( trelloCards ) == '[object Array]') {
               var i = 0;
-
-              if(Object.prototype.toString.call( trelloCards ) != '[object Array]') {
-                console.log(Object.prototype.toString.call( trelloCards ));
-                console.log(trelloCards);
-              }
 
               trelloCards.forEach(function (card) {
                 result[list.id]["topics"][i] = card.name;
@@ -78,12 +69,12 @@ module.exports = {
                 jobCallback(err, {title: config.widgetTitle, lists: result});
               }
             } else {
-              console.error("[trello]: err=" + err + " trelloCards=" + trelloCards);
+              console.warn('[trello]: trelloCards=' + Object.prototype.toString.call( trelloCards ) + ' with value=' + trelloCards);
             }
           });
         });
       } else {
-        console.error("[trello]: err=" + err + " trelloLists=" + trelloLists);
+        console.warn('[trello]: trelloCards=' + Object.prototype.toString.call( trelloLists ) + ' with value=' + trelloLists);
       }
     });
 
