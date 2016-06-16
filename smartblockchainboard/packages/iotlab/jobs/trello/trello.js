@@ -51,12 +51,21 @@ module.exports = {
       if(err == null && trelloLists != undefined && trelloLists != null) {
         // catch the case that we did not find any lists
 
+        if(Object.prototype.toString.call( trelloLists ) != '[object Array]') {
+          console.log(Object.prototype.toString.call( trelloLists ));
+        }
+
         trelloLists.forEach(function (list) {
           result[list.id] = {name: list.name, topics: {}};
 
           trello.getCardsOnList(list.id,  function (err, trelloCards) {
             if(err == null && trelloCards != undefined && trelloCards != null) {
               var i = 0;
+
+              if(Object.prototype.toString.call( trelloCards ) != '[object Array]') {
+                console.log(Object.prototype.toString.call( trelloCards ));
+              }
+
               trelloCards.forEach(function (card) {
                 result[list.id]["topics"][i] = card.name;
                 i++;
