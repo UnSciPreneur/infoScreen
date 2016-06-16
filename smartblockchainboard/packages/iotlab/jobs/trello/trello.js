@@ -53,6 +53,7 @@ module.exports = {
 
         if(Object.prototype.toString.call( trelloLists ) != '[object Array]') {
           console.log(Object.prototype.toString.call( trelloLists ));
+          console.log(trelloLists);
         }
 
         trelloLists.forEach(function (list) {
@@ -64,6 +65,7 @@ module.exports = {
 
               if(Object.prototype.toString.call( trelloCards ) != '[object Array]') {
                 console.log(Object.prototype.toString.call( trelloCards ));
+                console.log(trelloCards);
               }
 
               trelloCards.forEach(function (card) {
