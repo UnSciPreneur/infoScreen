@@ -25,3 +25,25 @@ Listens to a websocket that receives messages from the (mqtt-)tobic "canvas/art"
 $ mosquitto_pub -h app.b0x.it -p 3001 -t "canvas/art" -m "dali"
 $ mosquitto_pub -h app.b0x.it -p 3001 -t "canvas/art" -m "monet"
 $ mosquitto_pub -h app.b0x.it -p 3001 -t "canvas/art" -m "vangogh"
+
+
+## Tools
+
+### mqtt-ws
+
+https://github.com/dpjanes/mqtt-ws
+
+### ponte
+
+https://github.com/eclipse/ponte
+https://eclipse.org/ponte/
+
+## Content
+
+### Precipitations
+
+source: http://meteo.search.ch/prognosis
+
+### BTC Charts
+
+source: http://www.coincap.io/history/1day/BTC

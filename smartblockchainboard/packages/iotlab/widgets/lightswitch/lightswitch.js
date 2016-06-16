@@ -10,10 +10,12 @@ widget = {
     }
 
     //$('.content', el).html(data.text);
-
-    connectSocket();
   }
 };
+
+var connected = false;
+var state = "";
+connectSocket();
 
 function WSClick() {
   if (connected) {
@@ -27,7 +29,7 @@ function WSClick() {
 function connectSocket()
 {
   if ("WebSocket" in window) {
-    document.getElementById("wsConnect").style.background='rgb(' + 0xF0 + ',' + 0xF0 + ',' + 0x32 + ')';
+    document.getElementById("lightbulb").src="images/lightbulb_connecting.png";
     // Let us open a web socket
     var statusCh = new WebSocket("ws://app.b0x.it:2763/light/status");
     var setCh = new WebSocket("ws://app.b0x.it:2763/light/set");
@@ -37,43 +39,57 @@ function connectSocket()
       setCh.close();
     };
 
-    setLight = function(state) {
-      console.log("Setting state=" + state);
-      setCh.send(state);
+    setLight = function(_state) {
+      console.log("Setting state=" + _state);
+      setCh.send(_state);
+    };
+
+    imageClick = function() {
+      if (connected) {
+        if (state == "on") {
+          state = "off";
+        } else if (state == "off") {
+          state = "on";
+        }
+        setLight(state);
+      } else {
+        connectSocket();
+      }
     };
 
     statusCh.onopen = function() {
       // Web Socket is connected, send data using send()
-      // ws.send("This is iWidget!");
-      document.getElementById("wsConnect").style.background='rgb(' + 0x00 + ',' + 0xFF + ',' + 0x00 + ')';
+			//document.getElementById("lightbulb").src="images/lightbulb_off.png";
       connected = true;
       console.log("Websocket connected");
     };
+
     statusCh.onmessage = function (evt) {
       var receivedMsg = evt.data;
 
       console.log("Received light event " + receivedMsg);
       if (receivedMsg == 1) {
         // set image to lightbulb on
-        document.getElementById("lightbulbOn").style="display:inline";
-        document.getElementById("lightbulbOff").style="display:none";
+				state = "on";
+				document.getElementById("lightbulb").src="images/lightbulb.png";
       } else if (receivedMsg == 0) {
         // set image to lightbulb off
-        document.getElementById("lightbulbOff").style="display:inline";
-        document.getElementById("lightbulbOn").style="display:none";
+				state = "off";
+				document.getElementById("lightbulb").src="images/lightbulb_off.png";
       }
     };
+
     statusCh.onclose = function()
     {
       // websocket is closed.
-      document.getElementById("wsConnect").style.background='rgb(' + 0xFF + ',' + 0x00 + ',' + 0x00 + ')';
+			document.getElementById("lightbulb").src="images/lightbulb_disconnected.png";
       connected = false;
     };
   }
   else
   {
     // The browser doesn't support WebSocket
-    document.getElementById("wsConnect").style.background='rgb(' + 0xFF + ',' + 0x00 + ',' + 0x00 + ')';
+    document.getElementById("lightbulb").src="images/lightbulb_disconnected.png";
     connected = false;
   }
 }
