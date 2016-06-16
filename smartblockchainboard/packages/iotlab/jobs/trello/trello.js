@@ -48,14 +48,14 @@ module.exports = {
 
       var listCount = 0;
 
-      if(err == null || trelloLists == undefined || trelloLists == null) {
+      if(err == null && trelloLists != undefined && trelloLists != null) {
         // catch the case that we did not find any lists
 
         trelloLists.forEach(function (list) {
           result[list.id] = {name: list.name, topics: {}};
 
           trello.getCardsOnList(list.id,  function (err, trelloCards) {
-            if(err == null || trelloCards == undefined || trelloCards == null) {
+            if(err == null && trelloCards != undefined && trelloCards != null) {
               var i = 0;
               trelloCards.forEach(function (card) {
                 result[list.id]["topics"][i] = card.name;
@@ -66,12 +66,13 @@ module.exports = {
               if (trelloLists.length === listCount) {
                 jobCallback(err, {title: config.widgetTitle, lists: result});
               }
+            } else {
+              console.error("[trello]: err=" + err + " trelloCards=" + trelloCards);
             }
           });
         });
       } else {
-        console.log("There has been an error fetching Trello lists: " + err);
-        console.log("trelloLists=" + trelloLists);
+        console.error("[trello]: err=" + err + " trelloLists=" + trelloLists);
       }
     });
 
