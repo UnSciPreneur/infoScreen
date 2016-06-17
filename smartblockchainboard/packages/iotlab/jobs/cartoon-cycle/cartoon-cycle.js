@@ -13,22 +13,18 @@
 
 var $ = require('cheerio');
 
-module.exports = function(config, dependencies, job_callback) {
+module.exports = function(config, dependencies, jobCallback) {
 
-    var logger = dependencies.logger;
-    var options = {
-        url: config.url
-    };
-
-    dependencies.request(options, function(err, response, body) {
-        if (err || !response || response.statusCode != 200) {
-            var err_msg = err || "ERROR: Couldn't access the web page at " + options.url;
-            logger.error(err_msg);
-            job_callback(err_msg);
+    dependencies.easyRequest.HTML(config.url, function(err, body) {
+        if (err) {
+            var errMsg = err || "ERROR: Couldn't access the web page at " + config.url;
+            dependencies.logger.warn(errMsg);
+            // ToDo: do a more graceful recovery here
+            jobCallback(errMsg);
         } else {
             var imgUrl = $('#comic img', body).attr('src');
             var pageUrl = extractPageUrl($('#middleContainer', body).text());
-            job_callback(null, {pageSrc: pageUrl, imageSrc: imgUrl, title: config.widgetTitle });
+            jobCallback(err, {pageSrc: pageUrl, imageSrc: imgUrl, title: config.widgetTitle });
         }
     });
 

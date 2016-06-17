@@ -21,6 +21,9 @@ module.exports = {
     ical.fromURL(config.calendarUrl, {}, function (err, data) {
 
       if (err) {
+        dependencies.logger.warn(err);
+
+        // ToDo: do a more graceful recovery here
         return jobCallback(err);
       }
 

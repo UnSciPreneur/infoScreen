@@ -26,15 +26,6 @@ module.exports = {
      * @param dependencies
      */
     onInit: function (config, dependencies) {
-        /*
-         This is a good place for initialisation logic, like registering routes in express:
-
-         dependencies.logger.info('adding routes...');
-         dependencies.app.route("/jobs/mycustomroute")
-         .get(function (req, res) {
-         res.end('So something useful here');
-         });
-         */
         timeOffset = - config.timeframe;
     },
 
@@ -54,6 +45,8 @@ module.exports = {
             timeOffset = -config.timeframe;
         }
 
+        // ToDo: move the logic that verifies urls here and cache the result
+        
         jobCallback(null, {
             imageSrc: config.url + timeStamp + '.png',
             imageDesc: dateFormat(new Date(timeStamp * 1000), 'mmmm dS, HH:MM'),

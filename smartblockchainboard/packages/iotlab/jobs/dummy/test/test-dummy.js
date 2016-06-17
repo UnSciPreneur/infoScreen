@@ -1,13 +1,13 @@
 /**
- * Test file for Job: weatherforecast
+ * Test file for Job: dummy
  */
 
 var assert = require ('assert');
-var weatherforecast_SUT = require('../weatherforecast');
+var dummy_SUT = require('../dummy');
 
 var mockedConfig, mockedDependencies;
 
-describe ('weatherforecast test', function(){
+describe ('dummy test', function(){
 
   beforeEach(function (done) {
 
@@ -55,7 +55,7 @@ describe ('weatherforecast test', function(){
       };
 
       var config = {};
-      weatherforecast_SUT.onRun(config, mockedDependencies, function(err, data){
+      dummy_SUT.onRun(config, mockedDependencies, function(err, data){
         assert.equal(data.html, 'hello from google', 'expected a different reply from google: ' + data.html);
         done();
       });

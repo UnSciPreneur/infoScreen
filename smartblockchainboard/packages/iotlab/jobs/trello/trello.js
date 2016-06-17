@@ -66,15 +66,17 @@ module.exports = {
 
               listCount += 1;
               if (trelloLists.length === listCount) {
-                jobCallback(err, {title: config.widgetTitle, lists: result});
+                return jobCallback(err, {title: config.widgetTitle, lists: result});
               }
             } else {
-              console.warn('[trello]: trelloCards=' + Object.prototype.toString.call( trelloCards ) + ' with value=' + trelloCards);
+              dependencies.logger.warn('trelloCards=' + Object.prototype.toString.call( trelloCards ) + ' with value=' + trelloCards);
+              return jobCallback("Couldn't fetch Trello cards");
             }
           });
         });
       } else {
-        console.warn('[trello]: trelloCards=' + Object.prototype.toString.call( trelloLists ) + ' with value=' + trelloLists);
+        dependencies.logger.warn('trelloCards=' + Object.prototype.toString.call( trelloLists ) + ' with value=' + trelloLists);
+        return jobCallback("Couldn't fetch Trello lists");
       }
     });
 

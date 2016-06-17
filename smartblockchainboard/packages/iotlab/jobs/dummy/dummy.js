@@ -1,5 +1,5 @@
 /**
- * Job: btcrates
+ * Job: dummy
  *
  * Expected configuration:
  *
@@ -19,7 +19,7 @@ module.exports = {
    * @param dependencies
    */
   onInit: function (config, dependencies) {
-    
+
   },
 
   /**
@@ -30,17 +30,8 @@ module.exports = {
    */
   onRun: function (config, dependencies, jobCallback) {
 
-    dependencies.easyRequest.HTML(config.url, function (err, body) {
-      if (err) {
-        var errMsg = err || "ERROR: Couldn't access the web page at " + config.url;
-        dependencies.logger.warn(errMsg);
-        // ToDo: do a more graceful recovery here
-        jobCallback(errMsg);
-      } else {
-        // dependencies.logger.trace(html);
-        jobCallback(err, {title: config.widgetTitle, html: body});
-      }
-      
-    });
+    dependencies.logger.debug('Dummy job executed successfully.');
+    
+    jobCallback(null, {title: config.widgetTitle, html: "Hello World!"});
   }
 };

@@ -8,6 +8,8 @@ widget = {
       $('h2', el).text(data.title);
     }
 
-    $('.content', el).html(data.text);
+    //$('.content', el).html(data.text);
+    
+    // ToDo: catch the case that we cannot load the iframe and display a nice message instead
   }
 };
