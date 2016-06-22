@@ -21,9 +21,9 @@
         "col": 3,
         "width": 2,
         "height": 2,
-        "widget": "precipitationsradar",
-        "job": "precipitationsradar",
-        "config": "precipitationsradar"
+        "widget": "linegraph",
+        "job": "sales-graph",
+        "config": "sales"
       },
       {
         "row": 1,
@@ -82,7 +82,7 @@
     "precipitationsradar": {
       "interval": 1000,
       "widgetTitle": "Precipitations",
-      "url": "http://meteo.search.ch/images/cosmo/PREC/",
+      "url": "http://meteo.search.ch/images/cosmo/PREC1/",
       "timeframe": 3600
     },
     "cartoon-cycle": {

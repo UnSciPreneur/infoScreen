@@ -8,7 +8,6 @@ widget = {
       $('h2', el).text(data.title);
     }
 
-
     $('#prognosisimg').attr('src', data.imageSrc);
     $('#prognosistitle').html(data.imageDesc);
   }

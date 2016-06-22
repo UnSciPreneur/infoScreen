@@ -9,7 +9,7 @@
  * { 
  *   myconfigKey : [
  *     { widgetTitle : 'Precipitations' },
- *     { url : 'http://meteo.search.ch/images/cosmo/PREC/' },
+ *     { url : 'http://meteo.search.ch/images/cosmo/PREC1/' },
  *     { timeframe : 3600 }
  *   ]
  * }
@@ -17,6 +17,11 @@
 
 var timeOffset = 0;
 var dateFormat = require('dateformat');
+var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+
+var cacheManager = require('cache-manager');
+var memoryCache = cacheManager.caching({store: 'memory', max: 100, ttl: 1000/*seconds*/});
+var ttl = 1000/*seconds*/;
 
 module.exports = {
 
@@ -45,12 +50,52 @@ module.exports = {
             timeOffset = -config.timeframe;
         }
 
-        // ToDo: move the logic that verifies urls here and cache the result
-        
-        jobCallback(null, {
-            imageSrc: config.url + timeStamp + '.png',
-            imageDesc: dateFormat(new Date(timeStamp * 1000), 'mmmm dS, HH:MM'),
-            title: config.widgetTitle
+        var imageSrc = config.url + timeStamp + '.png';
+
+        memoryCache.get(imageSrc, function(err, result){
+            if ( err || result == undefined ) {
+                checkImageURL(imageSrc, function(imageSrc, isAvailable) {
+                    if (isAvailable) {
+                        dependencies.logger.trace("caching [" + imageSrc + "]=" + imageSrc);
+                        memoryCache.set(imageSrc, imageSrc, {ttl:ttl});
+                    } else {
+                        dependencies.logger.trace("caching [" + imageSrc + "]=" + 'http://meteo.search.ch/images/0.gif');
+                        memoryCache.set(imageSrc, 'http://meteo.search.ch/images/0.gif', {ttl:ttl});
+                    }
+                });
+            }
+
+            jobCallback(null, {
+                imageSrc: result,
+                imageDesc: dateFormat(new Date(timeStamp * 1000), 'mmmm dS, HH:MM'),
+                title: config.widgetTitle
+            });
         });
     }
 };
+
+function checkImageURL(url, callback) {
+    var reader = new XMLHttpRequest();
+
+    // Opens the file and specifies the method (get)
+    // Asynchronous is true
+    reader.open('GET', url, true);
+    reader.setRequestHeader('Access-Control-Allow-Origin', '*');
+
+    reader.onreadystatechange = checkReadyState;
+    reader.send();
+
+    function checkReadyState() {
+        if (reader.readyState === 4 /*XMLHttpRequest.DONE*/) {
+            // check to see whether request for the file failed or succeeded
+            // the meteo.search.ch server does send a 200 response even if the file is not available,
+            // i.e., even if the response has 0 bytes
+
+            var responseHeader = reader.getAllResponseHeaders();
+            var contentLength = responseHeader.match(/content-length: [0-9]*/g);
+            var length = contentLength[0];
+            callback(url, ((reader.status == 200 && length !== "content-length: 0") || (reader.status == 0)) );
+        }
+    }
+
+}

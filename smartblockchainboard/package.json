@@ -20,10 +20,13 @@
     "dateformat": ">=1.0.12",
     "chart.js": "2.1.5",
     "d3": "3.5.17",
-    "trello": "0.5.1"
+    "trello": "0.5.1",
+    "xmlhttprequest": "1.8.0",
+    "cache-manager": "2.1.2"
   },
   "scripts": {
     "start": "node start",
+    "debug": "node start --debug-brk=5858",
     "test": "find . -regex '.*/jobs/.*/test/.*.js' | xargs mocha"
   }
 }

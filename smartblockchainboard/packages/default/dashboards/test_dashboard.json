@@ -7,15 +7,6 @@
       "jquery.peity.js"
     ],
     "widgets": [
-      {
-        "row": 1,
-        "col": 1,
-        "width": 4,
-        "height": 2,
-        "widget": "trello",
-        "job": "trello",
-        "config": "trello"
-      }
     ]
   },
   "config": {
@@ -53,7 +44,7 @@
     "precipitationsradar": {
       "interval": 1000,
       "widgetTitle": "Precipitations",
-      "url": "http://meteo.search.ch/images/cosmo/PREC/",
+      "url": "http://meteo.search.ch/images/cosmo/PREC1/",
       "timeframe": 3600
     },
     "cartoon-cycle": {
