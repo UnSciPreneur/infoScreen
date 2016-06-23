@@ -93,8 +93,10 @@ function checkImageURL(url, callback) {
 
             var responseHeader = reader.getAllResponseHeaders();
             var contentLength = responseHeader.match(/content-length: [0-9]*/g);
-            var length = contentLength[0];
-            callback(url, ((reader.status == 200 && length !== "content-length: 0") || (reader.status == 0)) );
+            if( contentLength != null && contentLength.length > 0 ) {
+                var length = contentLength[0];
+                callback(url, ((reader.status == 200 && length !== "content-length: 0") || (reader.status == 0)) );
+            }
         }
     }
 
