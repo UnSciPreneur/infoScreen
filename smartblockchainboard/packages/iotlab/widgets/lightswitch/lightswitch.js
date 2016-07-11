@@ -46,11 +46,7 @@ function connectSocket()
 
     imageClick = function() {
       if (connected) {
-        if (state == "on") {
-          state = "off";
-        } else if (state == "off") {
-          state = "on";
-        }
+        state = !state;
         setLight(state);
       } else {
         connectSocket();
@@ -68,13 +64,13 @@ function connectSocket()
       var receivedMsg = evt.data;
 
       console.log("Received light event " + receivedMsg);
-      if (receivedMsg == 1) {
+      if (receivedMsg == "true") {
         // set image to lightbulb on
-				state = "on";
+				state = true;
 				document.getElementById("lightbulb").src="images/lightbulb.png";
-      } else if (receivedMsg == 0) {
+      } else if (receivedMsg == "false") {
         // set image to lightbulb off
-				state = "off";
+				state = false;
 				document.getElementById("lightbulb").src="images/lightbulb_off.png";
       }
     };
