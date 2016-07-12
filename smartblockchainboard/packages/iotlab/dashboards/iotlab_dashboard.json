@@ -79,9 +79,9 @@
         "col": 1,
         "width": 2,
         "height": 2,
-        "widget": "quotes",
-        "job": "quotes",
-        "config": "quotes-famous"
+        "widget": "netatmo",
+        "job": "netatmo",
+        "config": "netatmo"
       },
       {
         "row": 5,
@@ -98,6 +98,14 @@
     "dummy": {
       "interval": 10000,
       "widgetTitel": "Dummy Job"
+    },
+    "netatmo": {
+      "interval": 10000,
+      "widgetTitle": "Netatmo Readings",
+      "clientId": "5784ed582baa3c7a708b4578",
+      "clientSecret": "7PCUYnwZkXbj9yS996YtcW7CIzrsZC4",
+      "userName": "abogner@ethz.ch",
+      "passWord": "xr7670TmsJFCZnK"
     },
     "artgallery": {
       "interval": 10000,

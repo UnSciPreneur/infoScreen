@@ -22,7 +22,8 @@
     "d3": "3.5.17",
     "trello": "0.5.1",
     "xmlhttprequest": "1.8.0",
-    "cache-manager": "2.1.2"
+    "cache-manager": "2.1.2",
+    "netatmo": "1.5.0"
   },
   "scripts": {
     "start": "node start",
