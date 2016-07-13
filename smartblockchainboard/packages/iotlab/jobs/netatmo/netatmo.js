@@ -1,4 +1,3 @@
-
 var netatmo = require('netatmo');
 var auth;
 var api;
@@ -31,13 +30,10 @@ module.exports = {
 
     var logger = dependencies.logger;
 
-    dependencies.easyRequest.HTML('http://google.com', function (err, html) {
-      // Get Devicelist
-      // See docs: http://dev.netatmo.com/doc/restapi/devicelist
-      api.getDevicelist(function (err, devices, modules) {
-        jobCallback(err, {title: config.widgetTitle, html: devices[0]['dashboard_data']});
-      });
-
+    // See docs: http://dev.netatmo.com/doc/restapi/devicelist
+    api.getDevicelist(function (err, devices, modules) {
+      logger.log(devices[0]['dashboard_data']);
+      jobCallback(err, {title: config.widgetTitle, html: devices[0]['dashboard_data']});
     });
   }
 };

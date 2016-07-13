@@ -109,11 +109,15 @@
     },
     "artgallery": {
       "interval": 10000,
-      "widgetTitle": "Art Gallery"
+      "widgetTitle": "Art Gallery",
+      "wsHost": "app.b0x.it",
+      "wsPort": 2763
     },
     "lightswitch": {
       "interval": 10000,
-      "widgetTitle": "Light Switch"
+      "widgetTitle": "Light Switch",
+      "wsHost": "app.b0x.it",
+      "wsPort": 2763
     },
     "trello": {
       "interval": 30000,

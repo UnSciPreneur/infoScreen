@@ -1,4 +1,5 @@
 widget = {
+
   //runs when we receive data from the job
   onData: function (el, data) {
 
@@ -9,10 +10,11 @@ widget = {
     }
 
     //$('.content', el).html(data.text);
-
-    connectSocket();
   }
 };
+
+var connected = false;
+connectSocket();
 
 function WSClick() {
   if (connected) {
