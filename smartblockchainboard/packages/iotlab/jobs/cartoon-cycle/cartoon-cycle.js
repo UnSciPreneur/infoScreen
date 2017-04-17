@@ -31,7 +31,7 @@ module.exports = function(config, dependencies, jobCallback) {
 };
 
 function extractPageUrl(html) {
-    var res = html.match(/Permanent link to this comic: http:\/\/xkcd.com\/\d+\//);
+    var res = html.match(/Permanent link to this comic: https:\/\/xkcd.com\/\d+\//);
     res = res[0].substring(30);
     return res;
 }
